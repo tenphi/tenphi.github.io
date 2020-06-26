@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
-    "build": "vite build"
+    "build": "vite build",
+    "deploy": "npm run build && rsync -ruv --delete dist/* cloud:/usr/share/nginx/tenphi.me/",
   },
   "dependencies": {
     "numl": "^0.11.22",
