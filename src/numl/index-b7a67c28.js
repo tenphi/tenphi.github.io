@@ -1,0 +1,1 @@
+var t=/^[-!#$%&'*+\/0-9=?A-Z^_a-z{|}~](\.?[-!#$%&'*+\/0-9=?A-Z^_a-z`{|}~])*@[a-zA-Z0-9](-*\.?[a-zA-Z0-9])*\.[a-zA-Z](-?[a-zA-Z0-9])+$/;exports.validate=function(r){if(!r)return!1;if(r.length>254)return!1;if(!t.test(r))return!1;var e=r.split("@");return!(e[0].length>64)&&!e[1].split(".").some((function(t){return t.length>63}))};
