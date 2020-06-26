@@ -2,12 +2,14 @@
   <nu-block id="app">
     <nu-props radius="2x"></nu-props>
     <nu-theme :hue="hue"></nu-theme>
+    <nu-attrs for="menuitem" color="white"></nu-attrs>
+    <nu-attrs for="link" color="white"></nu-attrs>
     <nu-props move-transition-time=".25s" opacity-transition-time=".25s"></nu-props>
     <nu-section
       theme="special"
       border="2x inside hue(0 0 0 40%)|||1x inside hue(0 0 0 40%)"
       :image="gradient"
-      height="40 100vh initial" box="y">
+      height="40 100vh initial" box="y" color="white">
 
       <nu-flex
         place="inside" flow="column" gap="3x"
@@ -21,7 +23,7 @@
         </nu-circle>
         <nu-flow gap size="lg">
           <nu-h1
-            size="xl" text="b"
+            size="xl" text="b" color="white"
             nx-appear="timeout(10)" transition="opacity, move" opacity="0 :appear[1]" move="0 1x :appear[0 0]">
             Andrey Yamanov
           </nu-h1>
@@ -51,15 +53,14 @@
         </nu-menu>
       </nu-flex>
 
-      <nu-menu
+      <nu-pane
         flow="row" gap label="Theme settings"
         place="top 4x" padding size="lg" radius="2.5x" fill="hue(0 0 0 5% special)"
         nx-appear="timeout(1000) threshold(.1)" transition="opacity, move" opacity="0 :appear[1]" move="0 -6x :appear[0 0]">
-        <nu-attrs for="menuitem" clear padding radius mark="hover hue(0 0 0 10% special)"></nu-attrs>
+        <nu-attrs for="btn" clear padding mark="hover hue(0 0 0 10% special)"></nu-attrs>
         <nu-attrs for="tooltip" text="nowrap"></nu-attrs>
-        <nu-menuitem
-          id="scheme" toggle label="Change hue"
-          value="dark" off-value="light">
+        <nu-btn
+          id="scheme" toggle label="Change hue" clear padding>
           <nu-icon name="color-palette"></nu-icon>
           <nu-popup width="10" padding="2x" radius="round">
             <nu-attrs for="slider-cap" :border="`!1sw hue(${hue} 100 high special)`"></nu-attrs>
@@ -72,26 +73,27 @@
             </nu-slider>
           </nu-popup>
           <nu-tooltip>Change hue</nu-tooltip>
-        </nu-menuitem>
-        <nu-menuitem
-          id="scheme" toggle label="Scheme"
+        </nu-btn>
+        <nu-btn
+          id="scheme" toggle label="Scheme" :pressed="scheme === 'dark'"
           control=":root[data-nu-scheme]" value="dark" off-value="light">
           <nu-icon name="moon"></nu-icon>
           <nu-tooltip>Change scheme</nu-tooltip>
-        </nu-menuitem>
-        <nu-menuitem
+        </nu-btn>
+        <nu-btn
           id="contrast" toggle label="Contrast mode"
           control=":root[data-nu-contrast]" value="high" off-value="low">
           <nu-icon name="eye"></nu-icon>
           <nu-tooltip>Change contrast</nu-tooltip>
-        </nu-menuitem>
-      </nu-menu>
+        </nu-btn>
+      </nu-pane>
 
       <nu-pane
+        role="complementary"
         place="bottom 4x" radius fill="hue(0 0 0 5% special)" padding="1x 2x" text="nowrap"
         nx-appear="timeout(1000) threshold(.1)" transition="opacity, move" opacity="0 :appear[1]" move="0 6x :appear[0 0]">
         <nu-el>made with <nu-link to="!https://numl.design/">numl</nu-link></nu-el>
-        <nu-line orient="v" fill="white"></nu-line>
+        <nu-line orient="v" fill="hue(0 0 0 30% special)"></nu-line>
         <nu-el>view <nu-link to="!https://github.com/tenphi/tenphi.me">source code</nu-link></nu-el>
       </nu-pane>
     </nu-section>
@@ -102,11 +104,16 @@
 <script>
 import Settings from './services/settings';
 
+const ROOT = document.documentElement;
+
 export default {
   name: 'App',
   data() {
+    const schemeMedia = matchMedia('(prefers-color-scheme: dark)');
+
     return {
       hue: Settings.get('hue'),
+      schemeMedia,
     };
   },
   watch: {
@@ -115,6 +122,9 @@ export default {
     },
   },
   computed: {
+    scheme() {
+      return (ROOT.dataset.nuScheme || this.schemeMedia.matches) ? 'dark' : 'light';
+    },
     gradient() {
       const { hue } = this;
 
@@ -124,6 +134,13 @@ export default {
 
       return `${grad(-15, 30)}||${grad(-40, 15)}`;
     },
+  },
+  mounted() {
+    const { schemeMedia } = this;
+
+    schemeMedia.addListener((media) => {
+      this.schemeMedia = media;
+    });
   },
 }
 </script>
