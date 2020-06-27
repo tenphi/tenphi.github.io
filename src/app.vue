@@ -103,6 +103,8 @@
 
 <script>
 import Settings from './services/settings';
+import { setFavIcon } from './favicon';
+import { hue } from './numl/index';
 
 const ROOT = document.documentElement;
 
@@ -119,6 +121,7 @@ export default {
   watch: {
     hue(val) {
       Settings.set('hue', val);
+      this.applyFavIcon();
     },
   },
   computed: {
@@ -141,6 +144,13 @@ export default {
     schemeMedia.addListener((media) => {
       this.schemeMedia = media;
     });
+
+    this.applyFavIcon();
   },
+  methods: {
+    applyFavIcon() {
+      setFavIcon(hue(`${this.hue} 70`), this.scheme === 'dark');
+    },
+  }
 }
 </script>
