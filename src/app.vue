@@ -67,7 +67,7 @@
             <nu-attrs for="slider-cap" :border="`!1sw hue(${hue} 100 high special)`"></nu-attrs>
             <nu-slider
               id="hue"
-              value="{{initialHue}}"
+              :value="initialHue"
               min="0" max="359"
               @input="hue = $event.detail"
               image="linear(to right, hue(0 s), hue(90 s), hue(180 s), hue(270 s), hue(0 s))">
