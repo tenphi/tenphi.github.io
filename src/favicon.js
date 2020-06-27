@@ -6,6 +6,7 @@ function getImage(color) {
   const ctx = canvas.getContext("2d");
   ctx.beginPath();
   ctx.lineWidth = 2;
+  ctx.strokeStyle = color;
   ctx.moveTo(2,2);
   ctx.lineTo(2,4);
   ctx.moveTo(14,2);

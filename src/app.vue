@@ -37,7 +37,7 @@
           flow="row" size="xl" gap="2x" content="center"
           nx-appear="timeout(500)" transition="opacity, move" opacity="0 :appear[1]" move="0 3x :appear[0 0]">
           <nu-attrs for="menuitem" padding radius clear
-          nx-offset transition="move :offset[no]" move="(--offset-x * 1x) (--offset-y * 1x)"></nu-attrs>
+            nx-offset transition="move :offset[no]" move="(--offset-x * 1x) (--offset-y * 1x)"></nu-attrs>
           <nu-menuitem to="!https://github.com/tenphi" label="Github">
             <nu-icon name="github"></nu-icon>
           </nu-menuitem>
@@ -54,19 +54,20 @@
       </nu-flex>
 
       <nu-pane
+        role="region"
         flow="row" gap label="Theme settings"
-        place="top 4x" padding size="lg" radius="2.5x" fill="hue(0 0 0 5% special)"
+        place="top 4x" padding size="lg" radius="2.5x" fill="hue(0 0 0 5%)"
         nx-appear="timeout(1000) threshold(.1)" transition="opacity, move" opacity="0 :appear[1]" move="0 -6x :appear[0 0]">
         <nu-attrs for="btn" clear padding mark="hover hue(0 0 0 10% special)"></nu-attrs>
         <nu-attrs for="tooltip" text="nowrap"></nu-attrs>
         <nu-btn
           id="scheme" toggle label="Change hue" clear padding>
           <nu-icon name="color-palette"></nu-icon>
-          <nu-popup width="10" padding="2x" radius="round">
+          <nu-popup width="10" padding="2x" radius="round" fill="hue(0 0 0 70)" backdrop="blur(1x)" shadow="special">
             <nu-attrs for="slider-cap" :border="`!1sw hue(${hue} 100 high special)`"></nu-attrs>
             <nu-slider
               id="hue"
-              :value="hue"
+              value="{{initialHue}}"
               min="0" max="359"
               @input="hue = $event.detail"
               image="linear(to right, hue(0 s), hue(90 s), hue(180 s), hue(270 s), hue(0 s))">
@@ -90,10 +91,10 @@
 
       <nu-pane
         role="complementary"
-        place="bottom 4x" radius fill="hue(0 0 0 5% special)" padding="1x 2x" text="nowrap"
+        place="bottom 4x" radius fill="hue(0 0 0 5%)" padding="1x 2x" text="nowrap"
         nx-appear="timeout(1000) threshold(.1)" transition="opacity, move" opacity="0 :appear[1]" move="0 6x :appear[0 0]">
         <nu-el>made with <nu-link to="!https://numl.design/">numl</nu-link></nu-el>
-        <nu-line orient="v" fill="hue(0 0 0 30% special)"></nu-line>
+        <nu-line orient="v" fill="hue(0 0 100 30%)"></nu-line>
         <nu-el>view <nu-link to="!https://github.com/tenphi/tenphi.me">source code</nu-link></nu-el>
       </nu-pane>
     </nu-section>
@@ -112,9 +113,11 @@ export default {
   name: 'App',
   data() {
     const schemeMedia = matchMedia('(prefers-color-scheme: dark)');
+    const hue = Settings.get('hue');
 
     return {
-      hue: Settings.get('hue'),
+      initialHue: hue,
+      hue,
       schemeMedia,
     };
   },
@@ -132,7 +135,7 @@ export default {
       const { hue } = this;
 
       function grad(angle, step) {
-        return `linear(${angle}deg, hue(${(hue + 360 - step) % 360} 65 special), hue(${(hue + step) % 360} 65 special))`
+        return `linear(${angle}deg, hue(${(hue + 360 - step) % 360} 65 33 special), hue(${(hue + step) % 360} 65 33 special))`
       }
 
       return `${grad(-15, 30)}||${grad(-40, 15)}`;
