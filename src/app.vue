@@ -108,7 +108,7 @@
           made with
           <nu-link to="!https://numl.design/">numl</nu-link>
         </nu-el>
-        <nu-line orient="v" fill="hue(0 0 100 30%)"></nu-line>
+        <nu-line orient="v" fill="hue(0 0 0 30% special)"></nu-line>
         <nu-el label="View source code on github">view
           <nu-link to="!https://github.com/tenphi/tenphi.me">source code</nu-link>
         </nu-el>
@@ -154,7 +154,7 @@ export default {
         return `linear(${angle}deg, hue(${(hue.value + 360 - step) % 360} 65 33 special), hue(${(hue.value + step) % 360} 65 33 special))`
       }
 
-      return `${grad(-15, 30)}||${grad(-40, 15)}`;
+      return `${grad(-20, 35)}||${grad(-40, 30)}`;
     });
 
     onMounted(() => {
