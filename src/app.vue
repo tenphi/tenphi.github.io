@@ -102,62 +102,62 @@
         <nu-el label="View source code on github">view <nu-link to="!https://github.com/tenphi/tenphi.me">source code</nu-link></nu-el>
       </nu-pane>
     </nu-block>
-<!--    <router-view/>-->
   </nu-block>
 </template>
 
 <script>
+import { ref, computed, onMounted, watch } from 'vue';
 import Settings from './services/settings';
 import { setFavIcon } from './favicon';
-import { hue } from './numl/index';
+import { hue as hueGenerator } from 'numl';
 
 const ROOT = document.documentElement;
+const initialHue = Settings.get('hue');
+const hue = ref(initialHue);
+const queryList = ref(matchMedia('(prefers-color-scheme: dark)'));
+const scheme = computed(() => {
+  return (ROOT.dataset.nuScheme || queryList.value.matches) ? 'dark' : 'light';
+});
+
+onMounted(() => {
+  queryList.value.addListener((media) => {
+    queryList.value = media;
+  });
+
+  this.applyFavIcon();
+});
+
+/**
+ * Function to update favicon based on current hue
+ */
+function applyFavIcon() {
+  setFavIcon(hueGenerator(`${hue.value} 70`), scheme.value === 'dark');
+}
+
+// On hue change:
+// Save hue to the storage and update favicon color
+watch(() => hue.value, (hue) => {
+  Settings.set('hue', hue);
+  applyFavIcon();
+});
+
+// Create background gradient
+const gradient = computed(() => {
+  function grad(angle, step) {
+    return `linear(${angle}deg, hue(${(hue.value + 360 - step) % 360} 65 33 special), hue(${(hue.value + step) % 360} 65 33 special))`
+  }
+
+  return `${grad(-15, 30)}||${grad(-40, 15)}`;
+});
 
 export default {
-  name: 'App',
-  data() {
-    const schemeMedia = matchMedia('(prefers-color-scheme: dark)');
-    const hue = Settings.get('hue');
-
+  setup() {
     return {
-      initialHue: hue,
       hue,
-      schemeMedia,
+      scheme,
+      gradient,
+      initialHue,
     };
   },
-  watch: {
-    hue(val) {
-      Settings.set('hue', val);
-      this.applyFavIcon();
-    },
-  },
-  computed: {
-    scheme() {
-      return (ROOT.dataset.nuScheme || this.schemeMedia.matches) ? 'dark' : 'light';
-    },
-    gradient() {
-      const { hue } = this;
-
-      function grad(angle, step) {
-        return `linear(${angle}deg, hue(${(hue + 360 - step) % 360} 65 33 special), hue(${(hue + step) % 360} 65 33 special))`
-      }
-
-      return `${grad(-15, 30)}||${grad(-40, 15)}`;
-    },
-  },
-  mounted() {
-    const { schemeMedia } = this;
-
-    schemeMedia.addListener((media) => {
-      this.schemeMedia = media;
-    });
-
-    this.applyFavIcon();
-  },
-  methods: {
-    applyFavIcon() {
-      setFavIcon(hue(`${this.hue} 70`), this.scheme === 'dark');
-    },
-  }
-}
+};
 </script>

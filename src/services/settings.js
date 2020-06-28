@@ -3,7 +3,7 @@ import store from 'store2';
 const cache = store.namespace('settings');
 
 export const DEFAULT_SETTINGS = {
-  hue: 12,
+  hue: 40,
 }
 
 export default {
