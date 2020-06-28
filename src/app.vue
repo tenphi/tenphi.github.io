@@ -3,21 +3,23 @@
     <nu-props radius="2x"></nu-props>
     <nu-theme :hue="hue"></nu-theme>
     <nu-attrs for="menuitem" color="white"></nu-attrs>
+    <nu-attrs for="btn" color="white"></nu-attrs>
     <nu-attrs for="link" color="white"></nu-attrs>
     <nu-props move-transition-time=".25s" opacity-transition-time=".25s"></nu-props>
-    <nu-section
+    <nu-block
       theme="special"
       border="2x inside hue(0 0 0 40%)|||1x inside hue(0 0 0 40%)"
       :image="gradient"
       height="40 100vh initial" box="y" color="white">
 
-      <nu-flex
+      <nu-article
+        display="flex"
         place="inside" flow="column" gap="3x"
         color="white" items="center" text="center">
         <nu-circle box="y" size="14" fill=" hue(0 0 0 70%)" padding border="0">
           <nu-circle place="inside" size="12" overflow="no" shadow="special" border="0">
-            <nu-img>
-              <img alt="Photo" src="./assets/tenphi_photo.jpg"/>
+            <nu-img label="Photo">
+              <img src="./assets/tenphi_photo.jpg"/>
             </nu-img>
           </nu-circle>
         </nu-circle>
@@ -27,10 +29,10 @@
             nx-appear="timeout(10)" transition="opacity, move" opacity="0 :appear[1]" move="0 1x :appear[0 0]">
             Andrey Yamanov
           </nu-h1>
-          <nu-block
+          <nu-description
             nx-appear="timeout(250)" transition="opacity, move" opacity="0 :appear[1]" move="0 1x :appear[0 0]">
             CSS Cheater, UX&nbsp;Advocate
-          </nu-block>
+          </nu-description>
         </nu-flow>
         <nu-menu
           label="Social links"
@@ -51,7 +53,7 @@
             <nu-icon name="email"></nu-icon>
           </nu-menuitem>
         </nu-menu>
-      </nu-flex>
+      </nu-article>
 
       <nu-pane
         role="region"
@@ -90,14 +92,16 @@
       </nu-pane>
 
       <nu-pane
-        role="complementary"
+        role="complementary" label="Information"
         place="bottom 4x" radius fill="hue(0 0 0 5%)" padding="1x 2x" text="nowrap"
         nx-appear="timeout(1000) threshold(.1)" transition="opacity, move" opacity="0 :appear[1]" move="0 6x :appear[0 0]">
-        <nu-el>made with <nu-link to="!https://numl.design/">numl</nu-link></nu-el>
+        <nu-el label="made with numl">
+          made with <nu-link to="!https://numl.design/">numl</nu-link>
+        </nu-el>
         <nu-line orient="v" fill="hue(0 0 100 30%)"></nu-line>
-        <nu-el>view <nu-link to="!https://github.com/tenphi/tenphi.me">source code</nu-link></nu-el>
+        <nu-el label="View source code on github">view <nu-link to="!https://github.com/tenphi/tenphi.me">source code</nu-link></nu-el>
       </nu-pane>
-    </nu-section>
+    </nu-block>
 <!--    <router-view/>-->
   </nu-block>
 </template>
