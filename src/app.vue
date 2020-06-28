@@ -19,8 +19,8 @@
         <nu-circle box="y" size="14" fill=" hue(0 0 0 70%)" padding border="0">
           <nu-circle place="inside" size="12" overflow="no" shadow="special" border="0">
             <nu-img label="Photo">
-              <!--          "alt" attribute should be empty in this case. -->
-              <!--          We specified the label in the parent.-->
+              <!-- "alt" attribute should be empty in this case. -->
+              <!-- We specified the label in the parent.-->
               <img src="./assets/tenphi_photo.jpg" alt=""/>
             </nu-img>
           </nu-circle>
