@@ -126,7 +126,7 @@ onMounted(() => {
     queryList.value = media;
   });
 
-  this.applyFavIcon();
+  applyFavIcon();
 });
 
 /**
