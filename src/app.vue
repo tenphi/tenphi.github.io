@@ -124,6 +124,7 @@ import { setFavIcon } from './favicon';
 import { hue as hueGenerator } from 'numl';
 
 const ROOT = document.documentElement;
+const isFirefox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
 
 export default {
   setup() {
@@ -138,7 +139,9 @@ export default {
      * Function to update favicon based on current hue
      */
     function applyFavIcon() {
-      setFavIcon(hueGenerator(`${hue.value} 70`, scheme.value === 'dark'));
+      if (!isFirefox) {
+        setFavIcon(hueGenerator(`${hue.value} 70`, scheme.value === 'dark'));
+      }
     }
 
     // On hue change:
