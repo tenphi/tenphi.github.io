@@ -1,5 +1,5 @@
 // import { routing } from './numl/index';
-import 'numl';
+import './numl';
 import { createApp } from 'vue';
 import App from './app.vue';
 // import { router } from './router';

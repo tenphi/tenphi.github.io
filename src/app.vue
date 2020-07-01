@@ -35,7 +35,7 @@
           <nu-description
             nx-appear="timeout(250)" transition="opacity, move" opacity="0 :appear[1]"
             move="0 1x :appear[0 0]">
-            CSS Cheater, UX&nbsp;Advocate
+            CSS&nbsp;Cheater, DX&nbsp;Advocate
           </nu-description>
         </nu-flow>
         <nu-menu
@@ -121,7 +121,7 @@
 import { ref, computed, onMounted, watch } from 'vue';
 import Settings from './services/settings';
 import { setFavIcon } from './favicon';
-import { hue as hueGenerator } from 'numl';
+import { hue as hueGenerator } from './numl';
 
 const ROOT = document.documentElement;
 const isFirefox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
