@@ -5,7 +5,7 @@
     <nu-attrs for="menuitem" color="white"></nu-attrs>
     <nu-attrs for="btn" color="white"></nu-attrs>
     <nu-attrs for="link" color="white"></nu-attrs>
-    <nu-props move-transition-time=".25s" opacity-transition-time=".25s"></nu-props>
+    <nu-props move-transition=".25s" opacity-transition=".25s"></nu-props>
     <nu-block
       theme="special"
       border="2x inside hue(0 0 0 40%)|||1x inside hue(0 0 0 40%)"
@@ -43,6 +43,7 @@
           flow="row" size="xl" gap="2x" content="center"
           nx-appear="timeout(500)" transition="opacity, move" opacity="0 :appear[1]"
           move="0 3x :appear[0 0]">
+          <nu-props move-transition=".15s" transition=".15s"></nu-props>
           <nu-attrs for="menuitem" padding radius clear
                     nx-offset transition="move :offset[no]"
                     move="(--offset-x * 1x) (--offset-y * 1x)"></nu-attrs>
