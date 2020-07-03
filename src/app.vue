@@ -159,7 +159,7 @@ export default {
         return `linear(${angle}deg, hue(${(hue.value + 360 - step) % 360} 65 33 special), hue(${(hue.value + step) % 360} 65 33 special))`
       }
 
-      return `${grad(-20, 35)}||${grad(-40, 30)}`;
+      return `${grad(-20, 35)}||${grad(-40, 35)}`;
     });
 
     onMounted(() => {
