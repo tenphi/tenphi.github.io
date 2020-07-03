@@ -1,6 +1,6 @@
 <template>
   <nu-block id="app">
-    <nu-base responsive="80rem|60rem" size="(100vw / 80)|1rem"></nu-base>
+    <nu-base responsive="100rem" size="(100vw / 100)|1rem"></nu-base>
     <nu-props radius="2x"></nu-props>
     <nu-theme :hue="hue"></nu-theme>
     <nu-attrs for="menuitem" color="white"></nu-attrs>
