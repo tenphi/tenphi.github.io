@@ -110,7 +110,7 @@
         </nu-el>
         <nu-line orient="v" fill="hue(0 0 0 30% special)"></nu-line>
         <nu-el label="View source code on github">view
-          <nu-link to="!https://github.com/tenphi/tenphi.me">source code</nu-link>
+          <nu-link to="!https://github.com/tenphi/tenphi.me/blob/master/src/app.vue">source code</nu-link>
         </nu-el>
       </nu-footer>
     </nu-block>
