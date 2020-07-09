@@ -39,28 +39,27 @@
             CSS&nbsp;Cheater, DX&nbsp;Advocate
           </nu-description>
         </nu-flow>
-        <nu-menu
-          label="Social links"
-          flow="row" size="xl" gap="2x" content="center"
+        <nu-pane
+          label="Social links" size="xl" gap="2x"
           nx-appear="timeout(500)" transition="opacity, move" opacity="0 :appear[1]"
           move="0 3x :appear[0 0]">
           <nu-props move-transition=".15s" transition=".15s"></nu-props>
-          <nu-attrs for="menuitem" padding radius clear
+          <nu-attrs for="btn" padding radius clear
                     nx-offset transition="move :offset[no]"
                     move="(--offset-x * 1x) (--offset-y * 1x)"></nu-attrs>
-          <nu-menuitem to="!https://github.com/tenphi" label="Github">
+          <nu-btn to="!https://github.com/tenphi" label="Github">
             <nu-icon name="github"></nu-icon>
-          </nu-menuitem>
-          <nu-menuitem to="!https://twitter.com/tenphi" label="Twitter">
+          </nu-btn>
+          <nu-btn to="!https://twitter.com/tenphi" label="Twitter">
             <nu-icon name="twitter"></nu-icon>
-          </nu-menuitem>
-          <nu-menuitem to="!https://facebook.com/tenphi" label="Facebook">
+          </nu-btn>
+          <nu-btn to="!https://facebook.com/tenphi" label="Facebook">
             <nu-icon name="facebook"></nu-icon>
-          </nu-menuitem>
-          <nu-menuitem to="mailto:tenphi@gmail.com" label="Email">
+          </nu-btn>
+          <nu-btn to="mailto:tenphi@gmail.com" label="Email">
             <nu-icon name="email"></nu-icon>
-          </nu-menuitem>
-        </nu-menu>
+          </nu-btn>
+        </nu-pane>
       </nu-article>
 
       <nu-pane
