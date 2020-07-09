@@ -61,9 +61,8 @@
         </nu-nav>
       </nu-flow>
 
-      <nu-pane
-        role="region"
-        flow="row" gap label="Theme settings"
+      <nu-aside
+        display="flex" flow="row" gap label="Theme settings"
         place="top 4x" padding size="lg" radius="2.5x" fill="hue(0 0 0 5%)"
         nx-appear="timeout(1000) threshold(.1)" transition="opacity, move" opacity="0 :appear[1]"
         move="0 -6x :appear[0 0]">
@@ -97,10 +96,11 @@
           <nu-icon name="eye"></nu-icon>
           <nu-tooltip>Change contrast</nu-tooltip>
         </nu-btn>
-      </nu-pane>
+      </nu-aside>
 
-      <nu-pane
-        role="complementary" label="Information"
+      <nu-footer
+        label="Learn more about this site"
+        display="flex" flow="row" gap="1x"
         place="bottom 4x" radius fill="hue(0 0 0 5%)" padding="1x 2x" text="nowrap"
         nx-appear="timeout(1000) threshold(.1)" transition="opacity, move" opacity="0 :appear[1]"
         move="0 6x :appear[0 0]">
@@ -112,7 +112,7 @@
         <nu-el label="View source code on github">view
           <nu-link to="!https://github.com/tenphi/tenphi.me">source code</nu-link>
         </nu-el>
-      </nu-pane>
+      </nu-footer>
     </nu-block>
   </nu-block>
 </template>
