@@ -13,11 +13,8 @@
       :image="gradient"
       height="40 100vh initial" box="y" color="white">
 
-      <nu-flow
-        display="flex"
-        place="inside" flow="column" gap="3x"
-        color="white" items="center" text="center">
-        <nu-article gap="3x">
+      <nu-flow place="inside" gap="3x" color="white">
+        <nu-article display="flex" gap="3x" items="center" text="center">
           <nu-circle box="y" size="14" fill=" hue(0 0 0 70%)" padding border="0">
             <nu-circle place="inside" size="12" overflow="no" shadow="special" border="0">
               <nu-img label="Photo">
