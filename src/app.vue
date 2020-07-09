@@ -13,34 +13,36 @@
       :image="gradient"
       height="40 100vh initial" box="y" color="white">
 
-      <nu-article
+      <nu-flow
         display="flex"
         place="inside" flow="column" gap="3x"
         color="white" items="center" text="center">
-        <nu-circle box="y" size="14" fill=" hue(0 0 0 70%)" padding border="0">
-          <nu-circle place="inside" size="12" overflow="no" shadow="special" border="0">
-            <nu-img label="Photo">
-              <!-- "alt" attribute should be empty in this case. -->
-              <!-- We specified the label in the parent.-->
-              <img src="./assets/tenphi_photo.jpg" alt=""/>
-            </nu-img>
+        <nu-article gap="3x">
+          <nu-circle box="y" size="14" fill=" hue(0 0 0 70%)" padding border="0">
+            <nu-circle place="inside" size="12" overflow="no" shadow="special" border="0">
+              <nu-img label="Photo">
+                <!-- "alt" attribute should be empty in this case. -->
+                <!-- We specified the label in the parent.-->
+                <img src="./assets/tenphi_photo.jpg" alt=""/>
+              </nu-img>
+            </nu-circle>
           </nu-circle>
-        </nu-circle>
-        <nu-flow gap size="lg">
-          <nu-h1
-            size="xl" text="b" color="white"
-            nx-appear="timeout(10)" transition="opacity, move" opacity="0 :appear[1]"
-            move="0 1x :appear[0 0]">
-            Andrey Yamanov
-          </nu-h1>
-          <nu-description
-            nx-appear="timeout(250)" transition="opacity, move" opacity="0 :appear[1]"
-            move="0 1x :appear[0 0]">
-            CSS&nbsp;Cheater, DX&nbsp;Advocate
-          </nu-description>
-        </nu-flow>
-        <nu-pane
-          label="Social links" size="xl" gap="2x"
+          <nu-flow gap size="lg">
+            <nu-h1
+              size="xl" text="b" color="white"
+              nx-appear="timeout(10)" transition="opacity, move" opacity="0 :appear[1]"
+              move="0 1x :appear[0 0]">
+              Andrey Yamanov
+            </nu-h1>
+            <nu-description
+              nx-appear="timeout(250)" transition="opacity, move" opacity="0 :appear[1]"
+              move="0 1x :appear[0 0]">
+              CSS&nbsp;Cheater, DX&nbsp;Advocate
+            </nu-description>
+          </nu-flow>
+        </nu-article>
+        <nu-nav
+          label="Social links" flow="row" size="xl" gap="2x"
           nx-appear="timeout(500)" transition="opacity, move" opacity="0 :appear[1]"
           move="0 3x :appear[0 0]">
           <nu-props move-transition=".15s" transition=".15s"></nu-props>
@@ -59,8 +61,8 @@
           <nu-btn to="mailto:tenphi@gmail.com" label="Email">
             <nu-icon name="email"></nu-icon>
           </nu-btn>
-        </nu-pane>
-      </nu-article>
+        </nu-nav>
+      </nu-flow>
 
       <nu-pane
         role="region"
