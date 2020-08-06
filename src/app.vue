@@ -1,5 +1,5 @@
 <template>
-  <nu-block id="app">
+  <nu-block id="app" font="Baloo 2">
     <nu-base responsive="100rem" size="(100vw / 100)|1rem"></nu-base>
     <nu-props radius="2x"></nu-props>
     <nu-theme :hue="hue"></nu-theme>
@@ -17,7 +17,7 @@
         <nu-article display="flex" gap="3x" items="center" text="center">
           <nu-circle box="y" size="14" fill=" hue(0 0 0 70%)" padding border="0">
             <nu-circle place="inside" size="12" overflow="no" shadow="special" border="0">
-              <nu-img label="Photo">
+              <nu-img label="Photo" width="100%">
                 <!-- "alt" attribute should be empty in this case. -->
                 <!-- We specified the label in the parent.-->
                 <img src="./assets/tenphi_photo.jpg" alt=""/>
@@ -39,7 +39,7 @@
           </nu-flow>
         </nu-article>
         <nu-nav
-          label="Social links" flow="row" size="xl" gap="2x"
+          label="Social links" flow="row" size="3x" gap="2x"
           nx-appear="timeout(500)" transition="opacity, move" opacity="0 :appear[1]"
           move="0 3x :appear[0 0]">
           <nu-props move-transition=".15s" transition=".15s"></nu-props>
