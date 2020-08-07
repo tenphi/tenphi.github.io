@@ -105,10 +105,11 @@
         nx-appear="timeout(1000) threshold(.1)" transition="opacity, move" opacity="0 :appear[1]"
         move="0 6x :appear[0 0]">
         <nu-el label="made with numl">
-          made with
+          built with
           <nu-link to="!https://numl.design/">numl</nu-link>
         </nu-el>
-        <nu-line orient="v" fill="hue(0 0 0 30% special)"></nu-line>
+<!--        <nu-line orient="v" fill="hue(0 0 0 30% special)"></nu-line>-->
+        <nu-icon name="heart" size="xl" space="1x 0"></nu-icon>
         <nu-el label="View source code on github">view
           <nu-link to="!https://github.com/tenphi/tenphi.me/blob/master/src/app.vue">source code</nu-link>
         </nu-el>
