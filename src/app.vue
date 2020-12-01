@@ -15,8 +15,8 @@
 
       <nu-flow place="inside" gap="3x" color="white">
         <nu-article display="flex" gap="3x" items="center" text="center">
-          <nu-circle box="y" size="14" fill=" hue(0 0 0 70%)" padding border="0">
-            <nu-circle place="inside" size="12" overflow="no" shadow="special" border="0">
+          <nu-circle box="y" size="14" fill="hue(0 0 0 70%)" padding border="0">
+            <nu-circle place="inside" size="12" overflow="no" shadow="0 0 3x #shadow" border="0">
               <nu-img label="Photo" width="100%">
                 <!-- "alt" attribute should be empty in this case. -->
                 <!-- We specified the label in the parent.-->
@@ -27,24 +27,28 @@
           <nu-flow gap size="lg">
             <nu-h1
               size="xl" text="b" color="white"
-              nx-appear="timeout(10)" transition="opacity, move" opacity="0 :appear[1]"
+              use-appear="timeout(10)" transition="opacity, move" opacity="0 :appear[1]"
               move="0 1x :appear[0 0]">
               Andrey Yamanov
             </nu-h1>
             <nu-description
-              nx-appear="timeout(250)" transition="opacity, move" opacity="0 :appear[1]"
+              use-appear="timeout(250)" transition="opacity, move" opacity="0 :appear[1]"
               move="0 1x :appear[0 0]">
-              CSS&nbsp;Cheater, DX&nbsp;Advocate
+              CSS&nbsp;Cheater, DX&nbsp;Advocate<br/>
+              UI/UX Lead Engineer at
+              <nu-link to="!https://cube.dev">Cube.js</nu-link><br/>
+              Creator of
+              <nu-link to="!https://numl.design">Numl.Design</nu-link>
             </nu-description>
           </nu-flow>
         </nu-article>
         <nu-nav
           label="Social links" flow="row" size="3x" gap="2x"
-          nx-appear="timeout(500)" transition="opacity, move" opacity="0 :appear[1]"
+          use-appear="timeout(500)" transition="opacity, move" opacity="0 :appear[1]"
           move="0 3x :appear[0 0]">
           <nu-props move-transition=".15s" transition=".15s"></nu-props>
           <nu-attrs for="btn" padding radius clear
-                    nx-offset transition="move :offset[no]"
+                    use-offset transition="move :offset[no]"
                     move="(--offset-x * 1x) (--offset-y * 1x)"></nu-attrs>
           <nu-btn to="!https://github.com/tenphi" label="Github">
             <nu-icon name="github"></nu-icon>
@@ -64,7 +68,7 @@
       <nu-aside
         display="flex" flow="row" gap label="Theme settings"
         place="top 4x" padding size="lg" radius="2.5x" fill="hue(0 0 0 5%)"
-        nx-appear="timeout(1000) threshold(.1)" transition="opacity, move" opacity="0 :appear[1]"
+        use-appear="timeout(1000) threshold(.1)" transition="opacity, move" opacity="0 :appear[1]"
         move="0 -6x :appear[0 0]">
         <nu-attrs for="btn" clear padding mark="hover hue(0 0 0 10% special)"></nu-attrs>
         <nu-attrs for="tooltip" text="nowrap"></nu-attrs>
@@ -72,7 +76,7 @@
           id="scheme" toggle label="Change hue" clear padding>
           <nu-icon name="color-palette"></nu-icon>
           <nu-popup width="10" padding="2x" radius="round" fill="hue(0 0 0 70)" backdrop="blur(1x)"
-                    shadow="special">
+                    shadow border="0">
             <nu-attrs for="slider-cap" :border="`!1sw hue(${hue} 100 high special)`"></nu-attrs>
             <nu-slider
               id="hue"
@@ -102,11 +106,11 @@
         label="Learn more about this site"
         display="flex" flow="row" gap="1x"
         place="bottom 4x" radius fill="hue(0 0 0 5%)" padding="1x 2x" text="nowrap"
-        nx-appear="timeout(1000) threshold(.1)" transition="opacity, move" opacity="0 :appear[1]"
+        use-appear="timeout(1000) threshold(.1)" transition="opacity, move" opacity="0 :appear[1]"
         move="0 6x :appear[0 0]">
         <nu-el label="made with numl">
           built with
-          <nu-link to="!https://numl.design/">numl</nu-link>
+          <nu-link to="!https://numl.design/">numl.design</nu-link>
         </nu-el>
 <!--        <nu-line orient="v" fill="hue(0 0 0 30% special)"></nu-line>-->
         <nu-icon name="heart" size="xl" space="1x 0"></nu-icon>
@@ -122,10 +126,24 @@
 import { ref, computed, onMounted, watch } from 'vue';
 import Settings from './services/settings';
 import { setFavIcon } from './favicon';
-import { hue as hueGenerator } from './numl';
+// import { hue as hueGenerator } from './numl';
 
 const ROOT = document.documentElement;
 const isFirefox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
+
+function requireNude() {
+  return new Promise((resolve, reject) => {
+    if (typeof window === 'undefined') return;
+
+    if (window.Nude) {
+      resolve(window.Nude);
+    } else {
+      window.addEventListener('nudeReady', () => {
+        resolve(window.Nude);
+      });
+    }
+  });
+}
 
 export default {
   setup() {
@@ -139,9 +157,11 @@ export default {
     /**
      * Function to update favicon based on current hue
      */
-    function applyFavIcon() {
+    async function applyFavIcon() {
       if (!isFirefox) {
-        setFavIcon(hueGenerator(`${hue.value} 70`, scheme.value === 'dark'));
+        const Nude = await requireNude();
+
+        setFavIcon(Nude.hue(`${hue.value} 70`, scheme.value === 'dark'));
       }
     }
 

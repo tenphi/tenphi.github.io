@@ -4,4 +4,4 @@ dist
 *.local
 .idea
 package-lock.json
-src/numl
+public/numl
