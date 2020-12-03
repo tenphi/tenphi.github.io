@@ -73,7 +73,7 @@
         <nu-attrs for="btn" clear padding mark="hover hue(0 0 0 10% special)"></nu-attrs>
         <nu-attrs for="tooltip" text="nowrap"></nu-attrs>
         <nu-btn
-          id="scheme" toggle label="Change hue" clear padding>
+          id="hue" toggle label="Change hue" clear padding>
           <nu-icon name="color-palette"></nu-icon>
           <nu-popup width="10" padding="2x" radius="round" fill="hue(0 0 0 70)" backdrop="blur(1x)"
                     shadow border="0">
@@ -89,7 +89,7 @@
           <nu-tooltip>Change hue</nu-tooltip>
         </nu-btn>
         <nu-btn
-          id="scheme" toggle label="Scheme" :pressed="scheme === 'dark'"
+          id="scheme" toggle label="Scheme" :pressed="scheme === 'dark' || undefined"
           control=":root[data-nu-scheme]" value="dark" off-value="light">
           <nu-icon name="moon"></nu-icon>
           <nu-tooltip>Change scheme</nu-tooltip>
@@ -132,7 +132,7 @@ const ROOT = document.documentElement;
 const isFirefox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
 
 function requireNude() {
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve) => {
     if (typeof window === 'undefined') return;
 
     if (window.Nude) {
@@ -149,9 +149,9 @@ export default {
   setup() {
     const initialHue = Settings.get('hue');
     const hue = ref(initialHue);
-    const queryList = ref(matchMedia('(prefers-color-scheme: dark)'));
+    const queryMedia = ref(matchMedia('(prefers-color-scheme: dark)'));
     const scheme = computed(() => {
-      return (ROOT.dataset.nuScheme || queryList.value.matches) ? 'dark' : 'light';
+      return (ROOT.dataset.nuScheme === 'dark' || queryMedia.value.matches) ? 'dark' : 'light';
     });
 
     /**
@@ -182,8 +182,8 @@ export default {
     });
 
     onMounted(() => {
-      queryList.value.addListener((media) => {
-        queryList.value = media;
+      queryMedia.value.addListener((media) => {
+        queryMedia.value = media;
       });
 
       applyFavIcon();
