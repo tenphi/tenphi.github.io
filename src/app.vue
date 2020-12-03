@@ -46,7 +46,10 @@
           label="Social links" flow="row" size="3x" gap="2x"
           use-appear="timeout(500)" transition="opacity, move" opacity="0 :appear[1]"
           move="0 3x :appear[0 0]">
-          <nu-props move-transition=".15s" transition=".15s"></nu-props>
+          <nu-props
+            move-transition=".15s"
+            transition=".15s"></nu-props>
+          <nu-attrs for="icon" filter="drop-shadow(0 .25rem 1rem rgba(0,0,0,0.2))"></nu-attrs>
           <nu-attrs for="btn" padding radius clear
                     use-offset transition="move :offset[no]"
                     move="(--offset-x * 1x) (--offset-y * 1x)"></nu-attrs>
@@ -57,10 +60,10 @@
             <nu-icon name="twitter"></nu-icon>
           </nu-btn>
           <nu-btn to="!https://facebook.com/tenphi" label="Facebook">
-            <nu-icon name="facebook"></nu-icon>
+            <nu-icon name="facebook" filter="drop-shadow(0 .25rem 1rem rgba(0,0,0,0.3))"></nu-icon>
           </nu-btn>
           <nu-btn to="mailto:tenphi@gmail.com" label="Email">
-            <nu-icon name="email"></nu-icon>
+            <nu-icon name="email" filter="drop-shadow(0 .25rem 1rem rgba(0,0,0,0.08))"></nu-icon>
           </nu-btn>
         </nu-nav>
       </nu-flow>
@@ -69,7 +72,7 @@
         display="flex" flow="row" gap label="Theme settings"
         place="top 4x" padding size="lg" radius="2.5x" fill="hue(0 0 0 5%)"
         use-appear="timeout(1000) threshold(.1)" transition="opacity, move" opacity="0 :appear[1]"
-        move="0 -6x :appear[0 0]">
+        move="0 -6x :appear[0 0]" shadow="2x #shadow.05">
         <nu-attrs for="btn" clear padding mark="hover hue(0 0 0 10% special)"></nu-attrs>
         <nu-attrs for="tooltip" text="nowrap"></nu-attrs>
         <nu-btn
@@ -107,7 +110,7 @@
         display="flex" flow="row" gap="1x"
         place="bottom 4x" radius fill="hue(0 0 0 5%)" padding="1x 2x" text="nowrap"
         use-appear="timeout(1000) threshold(.1)" transition="opacity, move" opacity="0 :appear[1]"
-        move="0 6x :appear[0 0]">
+        move="0 6x :appear[0 0]" shadow="2x #shadow.05">
         <nu-el label="made with numl">
           built with
           <nu-link to="!https://numl.design/">numl.design</nu-link>
