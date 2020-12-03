@@ -11,7 +11,7 @@
       theme="special"
       border="2x inside hue(0 0 0 40%)|||1x inside hue(0 0 0 40%)"
       :image="gradient"
-      height="40 100vh initial" box="y" color="white">
+      height="42 100vh initial" box="y" color="white">
 
       <nu-flow place="inside" gap="3x" color="white">
         <nu-article display="flex" gap="3x" items="center" text="center">
