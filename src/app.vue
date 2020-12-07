@@ -54,7 +54,10 @@
           <nu-attrs for="btn" padding radius clear
                     use-offset transition="move :offset[no]"
                     move="(--offset-x * 1x) (--offset-y * 1x)"/>
-          <nu-svg width="5" src="/img/christmas-tree.svg"/>
+          <nu-attrs for="svg"
+                    use-offset transition="move :offset[no]"
+                    move="(--offset-x * 1x) (--offset-y * 1x)"/>
+          <nu-svg width="5|||2" src="/img/christmas-tree.svg"/>
 
           <nu-btn to="!https://github.com/tenphi" label="Github">
             <nu-icon name="github"/>
@@ -69,7 +72,7 @@
             <nu-icon name="email" filter="drop-shadow(0 .25rem 1rem rgba(0,0,0,0.08))"/>
           </nu-btn>
 
-          <nu-svg width="5" src="/img/christmas-tree.svg"/>
+          <nu-svg width="5|||2" src="/img/christmas-tree.svg"/>
         </nu-nav>
       </nu-flow>
 
