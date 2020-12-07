@@ -23,6 +23,7 @@
                 <img src="./assets/tenphi_photo.jpg" alt=""/>
               </nu-img>
             </nu-circle>
+            <nu-svg src="/img/santa-hat.svg" width="8" place="top left -10x .25x" rotate="-10deg"/>
           </nu-circle>
           <nu-flow gap size="lg">
             <nu-h1
@@ -54,10 +55,8 @@
           <nu-attrs for="btn" padding radius clear
                     use-offset transition="move :offset[no]"
                     move="(--offset-x * 1x) (--offset-y * 1x)"/>
-          <nu-attrs for="svg"
-                    use-offset transition="move :offset[no]"
-                    move="(--offset-x * 1x) (--offset-y * 1x)"/>
-          <nu-svg width="5|||2" src="/img/christmas-tree.svg"/>
+
+          <nu-svg id="tree" width="5|||2" src="/img/christmas-tree.svg"/>
 
           <nu-btn to="!https://github.com/tenphi" label="Github">
             <nu-icon name="github"/>
@@ -72,7 +71,7 @@
             <nu-icon name="email" filter="drop-shadow(0 .25rem 1rem rgba(0,0,0,0.08))"/>
           </nu-btn>
 
-          <nu-svg width="5|||2" src="/img/christmas-tree.svg"/>
+          <nu-svg id="tree" width="5|||2" src="/img/christmas-tree.svg"/>
         </nu-nav>
       </nu-flow>
 
@@ -86,8 +85,8 @@
         <nu-btn
             id="hue" toggle label="Change hue" clear padding>
           <nu-icon name="color-palette"></nu-icon>
-          <nu-popup width="10" padding="2x" radius="round" fill="hue(0 0 0 70)" backdrop="blur(1x)"
-                    shadow border="0">
+          <nu-popup width="10" padding="2x" radius="round" fill="hue(0 0 0 70)"
+                    backdrop-filter="blur(1x)" shadow border="0" z="front">
             <nu-attrs for="slider-cap" :border="`!1sw hue(${hue} 100 high special)`"></nu-attrs>
             <nu-slider
                 id="hue"

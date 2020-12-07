@@ -12,8 +12,10 @@
 
   <meta name="description" content="Personal page of Andrey Yamanov, CSS Hacker, DX Advocate.">
   <meta itemprop="description" content="Personal page of Andrey Yamanov, CSS Hacker, DX Advocate.">
-  <meta property="twitter:description" content="Personal page of Andrey Yamanov, CSS Hacker, DX Advocate.">
-  <meta property="og:description" content="Personal page of Andrey Yamanov, CSS Hacker, DX Advocate."/>
+  <meta property="twitter:description"
+        content="Personal page of Andrey Yamanov, CSS Hacker, DX Advocate.">
+  <meta property="og:description"
+        content="Personal page of Andrey Yamanov, CSS Hacker, DX Advocate."/>
 
   <meta itemprop="image" content="https://tenphi.me/img/site-preview.jpg">
   <meta property="twitter:image" content="https://tenphi.me/img/site-preview.jpg">
@@ -31,9 +33,42 @@
   <meta http-equiv="expires" content="0"/>
   <meta http-equiv="pragma" content="no-cache"/>
 
-  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600&display=swap"
+        rel="stylesheet">
 
-  <style>:not(:defined) { visibility: hidden; }</style>
+  <style>
+  :not(:defined) {
+    visibility: hidden;
+  }
+  [nu-id="tree"] > svg {
+    animation-name: tree-glow;
+    animation-duration: 1s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+  }
+
+  @keyframes tree-glow {
+    from {
+      filter: drop-shadow(0 .25rem .75rem rgba(233,0,96, 1));
+    }
+
+    25% {
+      filter: drop-shadow(0 .25rem .75rem rgba(138,117,0, 1));
+    }
+
+    50% {
+      filter: drop-shadow(0 .25rem .75rem rgba(0,130,146, 1));
+    }
+
+    75% {
+      filter: drop-shadow(0 .25rem .75rem rgba(162,60,255, 1));
+    }
+
+    to {
+      filter: drop-shadow(0 .25rem .75rem rgba(233,0,96, 1));
+    }
+  }
+  </style>
 </head>
 <body>
 <nu-root
@@ -46,7 +81,7 @@
 <noscript>
   <div>
     <article aria-labelledby="heading" aria-describedby="description">
-      <img src="/img/tenphi_photo.jpg" alt="Photo of Andrey Yamanov" />
+      <img src="/img/tenphi_photo.jpg" alt="Photo of Andrey Yamanov"/>
       <h1 id="heading">Andrey Yamanov</h1>
       <div id="description">
         <p>
@@ -81,11 +116,15 @@
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-10996362-4"></script>
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+window.dataLayer = window.dataLayer || [];
 
-  gtag('config', 'UA-10996362-4');
+function gtag() {
+  dataLayer.push(arguments);
+}
+
+gtag('js', new Date());
+
+gtag('config', 'UA-10996362-4');
 </script>
 </body>
 </html>
