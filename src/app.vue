@@ -130,6 +130,9 @@
           </nu-link>
         </nu-el>
       </nu-footer>
+      <nu-block display="contents" place="cover" interactive="no">
+        <canvas id="confetti"/>
+      </nu-block>
     </nu-block>
   </nu-block>
 </template>
@@ -138,6 +141,7 @@
 import { computed, onMounted, ref, watch } from 'vue';
 import Settings from './services/settings';
 import { setFavIcon } from './favicon';
+import ConfettiGenerator from "confetti-js";
 
 const ROOT = document.documentElement;
 const isFirefox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
@@ -198,6 +202,23 @@ export default {
       });
 
       applyFavIcon();
+
+      const confettiSettings = {
+        "target": "confetti",
+        "max": "80",
+        "size": "1",
+        "animate": true,
+        "props": ["square", "triangle"],
+        "colors": [[255, 255, 255]],
+        "clock": "25",
+        "rotate": true,
+        "width": "1536",
+        "height": "800",
+        "start_from_edge": false,
+        "respawn": true
+      };
+      const confetti = new ConfettiGenerator(confettiSettings);
+      confetti.render();
     });
 
     return {
