@@ -1,20 +1,20 @@
 {
   "name": "tenphi.me",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "deploy": "npm run build && rsync -ruv --delete dist/* cloud:/usr/share/nginx/tenphi.me/"
   },
   "dependencies": {
-    "numl": "^0.11.24",
+    "numl": "^1.0.0-beta.20",
     "store2": "^2.11.2",
-    "vue": "^3.0.0-beta.15",
-    "vue-router": "^4.0.0-alpha.13"
+    "vue": "^3.0.5"
   },
   "devDependencies": {
-    "@vue/compiler-sfc": "^3.0.0-beta.15",
+    "@vitejs/plugin-vue": "^1.1.4",
+    "@vue/compiler-sfc": "^3.0.5",
     "confetti-js": "0.0.18",
-    "vite": "^1.0.0-rc.13"
+    "vite": "^2.0.3"
   }
 }

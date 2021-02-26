@@ -1,12 +1,12 @@
 <template>
   <nu-block id="app" font="Baloo 2">
-    <nu-base responsive="100rem" size="(100vw / 100)|1rem"></nu-base>
-    <nu-props radius="2x"></nu-props>
-    <nu-theme :hue="hue"></nu-theme>
-    <nu-attrs for="menuitem" color="white"></nu-attrs>
-    <nu-attrs for="btn" color="white"></nu-attrs>
-    <nu-attrs for="link" color="white"></nu-attrs>
-    <nu-props move-transition=".25s" opacity-transition=".25s"></nu-props>
+    <nu-base responsive="100rem" size="(100vw / 100)|1rem"/>
+    <nu-props radius="2x"/>
+    <nu-theme :hue="hue"/>
+    <nu-attrs for="menuitem" color="white"/>
+    <nu-attrs for="btn" color="white"/>
+    <nu-attrs for="link" color="white"/>
+    <nu-props move-transition=".25s" opacity-transition=".25s"/>
     <nu-block
         theme="special"
         border="2x inside hue(0 0 0 40%)|||1x inside hue(0 0 0 40%)"
@@ -23,7 +23,7 @@
                 <img src="./assets/tenphi_photo.jpg" alt=""/>
               </nu-img>
             </nu-circle>
-            <nu-svg src="/img/santa-hat.svg" width="8" place="top left -10x .25x" rotate="-10deg"/>
+<!--            <nu-svg src="/img/santa-hat.svg" width="8" place="top left -10x .25x" rotate="-10deg"/>-->
           </nu-circle>
           <nu-flow gap size="lg">
             <nu-h1
@@ -56,7 +56,7 @@
                     use-offset transition="move :offset[no]"
                     move="(--offset-x * 1x) (--offset-y * 1x)"/>
 
-          <nu-svg id="tree" width="5|||2" src="/img/christmas-tree.svg"/>
+<!--          <nu-svg id="tree" width="5|||2" src="/img/christmas-tree.svg"/>-->
 
           <nu-btn to="!https://github.com/tenphi" label="Github">
             <nu-icon name="github"/>
@@ -71,7 +71,7 @@
             <nu-icon name="email" filter="drop-shadow(0 .25rem 1rem rgba(0,0,0,0.08))"/>
           </nu-btn>
 
-          <nu-svg id="tree" width="5|||2" src="/img/christmas-tree.svg"/>
+<!--          <nu-svg id="tree" width="5|||2" src="/img/christmas-tree.svg"/>-->
         </nu-nav>
       </nu-flow>
 
@@ -85,12 +85,13 @@
         <nu-btn
             id="hue" toggle label="Change hue" clear padding>
           <nu-icon name="color-palette"></nu-icon>
-          <nu-popup width="10" padding="2x" radius="round" fill="hue(0 0 0 70)"
-                    backdrop-filter="blur(1x)" shadow border="0" z="front">
+          <nu-popup
+              width="10" padding="2x" radius="round" fill="hue(0 0 0 70)"
+              backdrop-filter="blur(1x)" shadow border="0" z="front">
             <nu-attrs for="slider-cap" :border="`!1sw hue(${hue} 100 high special)`"></nu-attrs>
             <nu-slider
                 id="hue"
-                :value="initialHue"
+                :value="hue"
                 min="0" max="359"
                 @input="hue = $event.detail"
                 image="linear(to right, hue(0 s), hue(90 s), hue(180 s), hue(270 s), hue(0 s))">
@@ -130,7 +131,7 @@
         </nu-el>
       </nu-footer>
       <nu-block display="contents" place="cover" interactive="no">
-        <canvas id="confetti"/>
+        <canvas id="confetti" style="height: 100%; width: 100%;"/>
       </nu-block>
     </nu-block>
   </nu-block>
