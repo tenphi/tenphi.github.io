@@ -131,7 +131,7 @@
         </nu-el>
       </nu-footer>
       <nu-block display="contents" place="cover" interactive="no">
-        <canvas id="confetti" style="height: 100%; width: 100%;"/>
+        <canvas id="confetti"/>
       </nu-block>
     </nu-block>
   </nu-block>
@@ -162,6 +162,7 @@ function requireNude() {
 
 export default {
   setup() {
+    const showConfetti = ref(false);
     const initialHue = Settings.get('hue');
     const hue = ref(initialHue);
     const queryMedia = ref(matchMedia('(prefers-color-scheme: dark)'));
@@ -212,13 +213,17 @@ export default {
         "colors": [[255, 255, 255]],
         "clock": "25",
         "rotate": true,
-        "width": "1536",
-        "height": "800",
+        "width": "2560",
+        "height": "1600",
         "start_from_edge": false,
         "respawn": true
       };
       const confetti = new ConfettiGenerator(confettiSettings);
       confetti.render();
+
+      setTimeout(() => {
+        showConfetti.value = true;
+      }, 1000);
     });
 
     return {
@@ -226,6 +231,7 @@ export default {
       scheme,
       gradient,
       initialHue,
+      showConfetti,
     };
   },
 };
