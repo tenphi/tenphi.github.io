@@ -20,7 +20,7 @@
               <nu-img label="Photo" width="100%">
                 <!-- "alt" attribute should be empty in this case. -->
                 <!-- We specified the label in the parent.-->
-                <img src="./assets/tenphi_photo.jpg" alt=""/>
+                <img src="./assets/yution_1april.jpg" alt=""/>
               </nu-img>
             </nu-circle>
 <!--            <nu-svg src="/img/santa-hat.svg" width="8" place="top left -10x .25x" rotate="-10deg"/>-->
@@ -30,17 +30,14 @@
                 size="xl" text="b" color="white"
                 use-appear="timeout(10)" transition="opacity, move" opacity="0 :appear[1]"
                 move="0 1x :appear[0 0]">
-              Andrey Yamanov
+              Yution
             </nu-h1>
             <nu-description
                 use-appear="timeout(250)" transition="opacity, move" opacity="0 :appear[1]"
                 move="0 1x :appear[0 0]">
-              CSS&nbsp;Cheater, DX&nbsp;Advocate<br/>
-              UI/UX Lead Engineer at
-              <nu-link to="!https://cube.dev">Cube.js</nu-link>
-              <br/>
-              Creator of
-              <nu-link to="!https://numl.design">Numl.Design</nu-link>
+              Lord of stones and sands<br/>
+              Adept of Light at
+              <nu-link to="!https://vk.com/terradoinharm">Terradoin Harm</nu-link>
             </nu-description>
           </nu-flow>
         </nu-article>
