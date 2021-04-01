@@ -5,4 +5,4 @@ dist
 .idea
 package-lock.json
 public/numl
-public/projects
+public/mario
