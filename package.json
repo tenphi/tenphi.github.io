@@ -4,7 +4,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "deploy": "npm run build && rsync -ruv --delete dist/* cloud:/usr/share/nginx/tenphi.me/"
+    "deploy": "npm run build"
   },
   "dependencies": {
     "numl": "^1.0.0-beta.20",
