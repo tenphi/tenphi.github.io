@@ -40,7 +40,7 @@
               <nu-link to="!https://cube.dev">Cube.js</nu-link>
               <br/>
               Creator of
-              <nu-link to="!https://numl.design">Numl.Design</nu-link>
+              <nu-link to="!https://numl.tenphi.me">Numl.Design</nu-link>
             </nu-description>
           </nu-flow>
         </nu-article>
@@ -121,7 +121,7 @@
           move="0 6x :appear[0 0]" shadow="2x #shadow.05">
         <nu-el label="made with numl">
           built with
-          <nu-link to="!https://numl.design/">numl.design</nu-link>
+          <nu-link to="!https://numl.tenphi.me">numl.design</nu-link>
         </nu-el>
         <!--        <nu-line orient="v" fill="hue(0 0 0 30% special)"></nu-line>-->
         <nu-icon name="heart" size="xl" space="1x 0"></nu-icon>
