@@ -37,7 +37,7 @@
                 move="0 1x :appear[0 0]">
               CSS&nbsp;Cheater, DX&nbsp;Advocate<br/>
               UI/UX Lead Engineer at
-              <nu-link to="!https://cube.dev">Cube.js</nu-link>
+              <nu-link to="!https://cube.dev">Cube Dev</nu-link>
               <br/>
               Creator of
               <nu-link to="!https://numl.tenphi.me">Numl.Design</nu-link>
